@@ -72,7 +72,7 @@ public class BasicItemController {
         return "basic/item";
     }
 
-    @PostMapping("/add")
+    //@PostMapping("/add")
     public String addItemV4(Item item) {
 
         // String, Integer 등 단순 타입은 @RequestParam
@@ -81,6 +81,13 @@ public class BasicItemController {
         itemRepository.save(item);
 
         return "basic/item";
+    }
+
+    @PostMapping("/add")
+    public String addItemV5(Item item) {
+
+        itemRepository.save(item);
+        return "redirect:/basic/items/" + item.getId();
     }
 
     @GetMapping("/{itemId}/edit")
